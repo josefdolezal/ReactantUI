@@ -17,7 +17,7 @@ public struct Rect {
         self.size = size
     }
 
-    init(x: Double, y: Double, width: Double, height: Double) {
+    init(x: Float, y: Float, width: Float, height: Float) {
         self.init(origin: Point(x: x, y: y), size: Size(width: width, height: height))
     }
 }

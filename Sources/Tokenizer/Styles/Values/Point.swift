@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Point {
-    let x: Double
-    let y: Double
+    let x: Float
+    let y: Float
 }
 
 #if ReactantRuntime

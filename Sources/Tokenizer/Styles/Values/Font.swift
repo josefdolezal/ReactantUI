@@ -1,8 +1,8 @@
 import Foundation
 
 public enum Font {
-    case system(weight: SystemFontWeight, size: Double)
-    case named(String, size: Double)
+    case system(weight: SystemFontWeight, size: Float)
+    case named(String, size: Float)
 }
 
 #if ReactantRuntime
