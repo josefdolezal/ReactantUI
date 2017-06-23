@@ -94,27 +94,27 @@ public class ReactantLiveUIApplier {
         }
 
         if let horizontalCompressionPriority = element.layout.contentCompressionPriorityHorizontal {
-            view.setContentCompressionResistancePriority(horizontalCompressionPriority.numeric, for: .horizontal)
+            view.setContentCompressionResistancePriority(UILayoutPriority(horizontalCompressionPriority.numeric), for: .horizontal)
         } else {
-            view.setContentCompressionResistancePriority(elementType.defaultContentCompression.horizontal.numeric, for: .horizontal)
+            view.setContentCompressionResistancePriority(UILayoutPriority(elementType.defaultContentCompression.horizontal.numeric), for: .horizontal)
         }
 
         if let verticalCompressionPriority = element.layout.contentCompressionPriorityVertical {
-            view.setContentCompressionResistancePriority(verticalCompressionPriority.numeric, for: .vertical)
+            view.setContentCompressionResistancePriority(UILayoutPriority(verticalCompressionPriority.numeric), for: .vertical)
         } else {
-            view.setContentCompressionResistancePriority(elementType.defaultContentCompression.vertical.numeric, for: .vertical)
+            view.setContentCompressionResistancePriority(UILayoutPriority(elementType.defaultContentCompression.vertical.numeric), for: .vertical)
         }
 
         if let horizontalHuggingPriority = element.layout.contentHuggingPriorityHorizontal {
-            view.setContentHuggingPriority(horizontalHuggingPriority.numeric, for: .horizontal)
+            view.setContentHuggingPriority(UILayoutPriority(horizontalHuggingPriority.numeric), for: .horizontal)
         } else {
-            view.setContentHuggingPriority(elementType.defaultContentHugging.horizontal.numeric, for: .horizontal)
+            view.setContentHuggingPriority(UILayoutPriority(elementType.defaultContentHugging.horizontal.numeric), for: .horizontal)
         }
 
         if let verticalHuggingPriority = element.layout.contentHuggingPriorityVertical {
-            view.setContentHuggingPriority(verticalHuggingPriority.numeric, for: .vertical)
+            view.setContentHuggingPriority(UILayoutPriority(verticalHuggingPriority.numeric), for: .vertical)
         } else {
-            view.setContentHuggingPriority(elementType.defaultContentHugging.vertical.numeric, for: .vertical)
+            view.setContentHuggingPriority(UILayoutPriority(elementType.defaultContentHugging.vertical.numeric), for: .vertical)
         }
 
         var error: LiveUIError?

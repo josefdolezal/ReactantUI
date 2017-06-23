@@ -11,7 +11,7 @@ import Foundation
 struct Lexer {
     enum Token {
         case identifier(String)
-        case number(Float)
+        case number(Double)
         case parensOpen
         case parensClose
         case assignment
@@ -22,13 +22,14 @@ struct Lexer {
         case at
         case other(String)
         case whitespace(String)
+        case comma
     }
 
     typealias TokenGenerator = (String) -> Token?
     static let tokenList: [(String, TokenGenerator)] = [
         ("[ \t\n]", { .whitespace($0) }),
         ("[a-zA-Z][a-zA-Z0-9]*", { .identifier($0) }),
-        ("-?[0-9]+(\\.[0-9]+)?", { Float($0).map(Token.number) }),
+        ("-?[0-9]+(\\.[0-9]+)?", { Double($0).map(Token.number) }),
         ("\\(", { _ in .parensOpen }),
         ("\\)", { _ in .parensClose }),
         (":", { _ in .colon }),
@@ -37,6 +38,7 @@ struct Lexer {
         ("@", { _ in .at }),
         ("[<=>][=]", { .operatorToken($0) }),
         ("=", { _ in .assignment }),
+        (",", { _ in .comma })
         ]
 
     static func tokenize(input: String, keepWhitespace: Bool = false) -> [Token] {
@@ -79,7 +81,7 @@ extension Lexer.Token: Equatable {
             return lhsIdentifier == rhsIdentifier
         case (.number(let lhsNumber), .number(let rhsNumber)):
             return lhsNumber == rhsNumber
-        case (.parensOpen, .parensOpen), (.parensClose, .parensClose), (.colon, .colon), (.period, .period), (.assignment, .assignment), (.at, .at):
+        case (.parensOpen, .parensOpen), (.parensClose, .parensClose), (.colon, .colon), (.period, .period), (.assignment, .assignment), (.at, .at), (.comma, .comma):
             return true
         case (.operatorToken(let lhsOperator), .operatorToken(let rhsOperator)):
             return lhsOperator == rhsOperator

@@ -116,8 +116,8 @@ class ConstraintParser: BaseParser<Constraint> {
             let target = try parseTarget()
             let targetAnchor = try parseTargetAnchor()
 
-            var multiplier = 1 as Float
-            var constant = 0 as Float
+            var multiplier = 1.0
+            var constant = 0.0
             while try !constraintEnd(), let modifier = try parseModifier() {
                 switch modifier {
                 case .multiplied(let by):
@@ -289,6 +289,8 @@ class TextParser: BaseParser<TransformedText> {
                 components.append(".")
             case .at:
                 components.append("@")
+            case .comma:
+                components.append(",")
             case .other(let other):
                 components.append(other)
             case .whitespace(let whitespace):
@@ -310,7 +312,7 @@ class FontParser: BaseParser<Font> {
             guard let weight = SystemFontWeight(rawValue: possibleWeight) else {
                 throw ParseError.message("Unknown weight name `\(possibleWeight)`!")
             }
-            let size: Float
+            let size: Double
             if case .at? = try? popToken() {
                 let possibleSize = try popToken()
                 guard case .number(let fontSize) = possibleSize else {
@@ -352,13 +354,15 @@ class FontParser: BaseParser<Font> {
                     components.append(".")
                 case .at:
                     break
+                case .comma:
+                    break
                 case .other(let other):
                     components.append(other)
                 case .whitespace(let whitespace):
                     components.append(whitespace)
                 }
             }
-            let size: Float
+            let size: Double
             if case .at? = try? popToken() {
                 let possibleSize = try popToken()
                 guard case .number(let fontSize) = possibleSize else {

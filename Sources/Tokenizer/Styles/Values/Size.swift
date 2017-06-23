@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Size {
-    let width: Float
-    let height: Float
+    let width: Double
+    let height: Double
 }
 
 #if ReactantRuntime

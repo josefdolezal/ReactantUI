@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct Constraint {
     public let field: String?
     public let anchor: LayoutAnchor
@@ -16,8 +15,8 @@ public struct Constraint {
 }
 
 public enum ConstraintType {
-    case constant(Float)
-    case targeted(target: ConstraintTarget, targetAnchor: LayoutAnchor, multiplier: Float, constant: Float)
+    case constant(Double)
+    case targeted(target: ConstraintTarget, targetAnchor: LayoutAnchor, multiplier: Double, constant: Double)
 }
 
 public enum ConstraintTarget {

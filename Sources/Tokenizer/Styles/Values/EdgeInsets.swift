@@ -9,10 +9,10 @@
 import Foundation
 
 public struct EdgeInsets {
-    let top: Float
-    let left: Float
-    let bottom: Float
-    let right: Float
+    let top: Double
+    let left: Double
+    let bottom: Double
+    let right: Double
 }
 
 #if ReactantRuntime

@@ -1,5 +1,5 @@
 //
-//  Float+CGFloat.swift
+//  Double+CGFloat.swift
 //  Reactant
 //
 //  Created by Matouš Hýbl on 23/04/2017.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import Foundation
 
-extension Float {
+extension Double {
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
